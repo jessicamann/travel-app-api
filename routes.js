@@ -1,5 +1,4 @@
 const express = require('express');
-const controller = require('./controller');
 
 module.exports = function(app) {
 	const routes = express.Router();
