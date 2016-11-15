@@ -6,7 +6,7 @@ var options = {
 };
 
 var pgp = require('pg-promise')(options);
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/data';
+var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/places';
 var db = pgp(connectionString);
 
 exports.getAllPlaces = function(req, res, next) {
