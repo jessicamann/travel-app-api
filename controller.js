@@ -30,6 +30,9 @@ exports.addAPlace = function(req, res, next) {
   const name = '\'' + body.name + '\'';
   const location = '\'' + body.location + '\'';
   const description = '\'' + body.description + '\'';
+  var insertQuery = 
+    'INSERT INTO places (name, location, description) values (' + 
+    name + ', ' + location + ', ' + description + ');';
 
   db.any(insertQuery)
     .then(function (data) {
