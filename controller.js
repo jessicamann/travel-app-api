@@ -23,3 +23,24 @@ exports.getAllPlaces = function(req, res, next) {
         return next(err);
       });
 }
+
+//todo: add validations to input somewhere??
+exports.addAPlace = function(req, res, next) {
+  const body = req.body;
+  const name = '\'' + body.name + '\'';
+  const location = '\'' + body.location + '\'';
+  const description = '\'' + body.description + '\'';
+
+  db.any(insertQuery)
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Added a place'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
