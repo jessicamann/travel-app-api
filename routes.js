@@ -10,6 +10,7 @@ module.exports = function(app) {
 
 	routes.get('/places', controller.getAllPlaces);
 	routes.post('/add', controller.addAPlace);
+	routes.post('/delete', controller.deleteAPlace);
 
 	app.use('/', routes);
 }

@@ -47,3 +47,21 @@ exports.addAPlace = function(req, res, next) {
       return next(err);
     });
 }
+
+exports.deleteAPlace = function(req, res, next) {
+  const id = req.body.id;
+  const deleteQuery = 'DELETE FROM places WHERE id=' + id + ';'
+  db.any(deleteQuery)
+    .then(function (data) {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Deleted a place'
+        });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
+}
+
