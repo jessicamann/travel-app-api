@@ -22,7 +22,7 @@ exports.getAllPlaces = function(req, res, next) {
       .catch(function (err) {
         return next(err);
       });
-}
+};
 
 //todo: add validations to input somewhere??
 exports.addAPlace = function(req, res, next) {
@@ -30,8 +30,8 @@ exports.addAPlace = function(req, res, next) {
   const name = '\'' + body.name + '\'';
   const location = '\'' + body.location + '\'';
   const description = '\'' + body.description + '\'';
-  var insertQuery = 
-    'INSERT INTO places (name, location, description) values (' + 
+  var insertQuery =
+    'INSERT INTO places (name, location, description) values (' +
     name + ', ' + location + ', ' + description + ');';
 
   db.any(insertQuery)
@@ -46,11 +46,11 @@ exports.addAPlace = function(req, res, next) {
     .catch(function (err) {
       return next(err);
     });
-}
+};
 
 exports.deleteAPlace = function(req, res, next) {
   const id = req.body.id;
-  const deleteQuery = 'DELETE FROM places WHERE id=' + id + ';'
+  const deleteQuery = 'DELETE FROM places WHERE id=' + id + ';';
   db.any(deleteQuery)
     .then(function (data) {
       res.status(200)
@@ -63,5 +63,4 @@ exports.deleteAPlace = function(req, res, next) {
     .catch(function (err) {
       return next(err);
     });
-}
-
+};
